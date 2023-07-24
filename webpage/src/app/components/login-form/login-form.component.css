@@ -1,0 +1,14 @@
+.form-signin{
+  width: 100%;
+  max-width: 390px;
+  padding: 15px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+#message{
+  height: 170px;
+}
+button {
+  margin-top: 30px;
+}

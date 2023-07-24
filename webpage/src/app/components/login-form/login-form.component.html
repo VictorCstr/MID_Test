@@ -1,0 +1,94 @@
+<body class="text-center container">
+  <main class="form-signin">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <img
+        class="mb-4"
+        src="/assets/person-fill-exclamation.svg"
+        alt=""
+        width="72"
+        height="57"
+      />
+      <h1 class="h3 mb-3 fw-normal">Enter data and send your message!</h1>
+
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="name"
+          placeholder="Victor Castro"
+        />
+        <label for="floatingInput">Name</label>
+        <div
+          class="text-danger mt-2 mb-4"
+          *ngIf="form.get('name')?.errors && form.get('name')?.touched"
+        >
+          Mandatory to inform the name!
+        </div>
+      </div>
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+          placeholder="teste@icloud.com"
+        />
+        <label for="floatingInput">Email</label>
+        <div
+          class="text-danger mt-2 mb-4"
+          *ngIf="form.get('email')?.errors && form.get('email')?.touched"
+        >
+          Mandatory to inform the email or the email is incorrect!
+        </div>
+      </div>
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="subject"
+          formControlName="subject"
+          placeholder="Review"
+        />
+        <label for="floatingInput">Subject</label>
+        <div
+          class="text-danger mt-2 mb-4"
+          *ngIf="form.get('subject')?.errors && form.get('subject')?.touched"
+        >
+          Mandatory to inform the subject!
+        </div>
+      </div>
+      <div class="form-floating">
+        <textarea
+          type="text"
+          class="form-control"
+          id="message"
+          formControlName="message"
+          placeholder="Message..."
+          rows="3"
+        ></textarea>
+        <label for="floatingInput">Message</label>
+        <div
+          class="text-danger mt-2 mb-4"
+          *ngIf="form.get('message')?.errors && form.get('message')?.touched"
+        >
+          Mandatory to inform the message , Minimum of 60 letters!
+        </div>
+      </div>
+      <div class="text-danger mt-2 mb-4" *ngIf="error$ | async">
+        Error sending data, fill in correctly and send again!
+      </div>
+      <div class="text-success mt-2 mb-4" *ngIf="form.valid">
+        Form valid for submission!
+      </div>
+      <button
+        class="w-100 btn btn-warning"
+        type="submit"
+        id="login"
+        [disabled]="!form.valid"
+      >
+        Submit Message
+      </button>
+    </form>
+  </main>
+</body>
